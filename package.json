@@ -1,8 +1,8 @@
 {
   "name": "databinder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple data-binder library",
-  "main": "index.js",
+  "main": "databinder.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +16,7 @@
     "js",
     "es"
   ],
-  "author": "Joshua Cerbito",
+  "author": "@joshuacerbito",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshuacerbito/databinder/issues"

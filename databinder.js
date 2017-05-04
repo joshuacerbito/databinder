@@ -40,7 +40,7 @@ function DataBinder(object_id) {
 
   // PubSub propagates changes to all bound elements
   pubSub.on(message, function(evt, prop_name, new_val) {
-    var elements = document.querySelectorAll(`[${data_attr}=${prop_name}]`),
+    let elements = document.querySelectorAll(`[${data_attr}=${prop_name}]`),
         tag_name;
 
     for (let i = 0, len = elements.length; i < len; i++) {
@@ -63,18 +63,39 @@ function Binder(id) {
   let binder = new DataBinder(id),
       model = {
         attributes: {},
+        computes: {},
 
         // The attribute setter publish changes using the DataBinder PubSub
         set: function(prop, val) {
           this.attributes[prop] = val;
           // Use the `publish` method
+
           binder.publish(`${id}:change`, prop, val, this);
 
           return { prop, val };
         },
 
-        compute: function(prop, handler) {
+        setComputed: function (prop, attrs, handler) {
+          if( typeof handler !== 'function' ){
+            throw Error('The handler must be a function');
+            return;
+          } else if ( Object.prototype.toString.call( attrs ) !== '[object Array]' ) {
+            throw Error('Attributes must be an array of properties');
+            return;
+          }
 
+          this.computes[prop] = { attrs, handler };
+
+          let values = {};
+          attrs.forEach(item => {
+            this.computes[item] = prop;
+            values[item] = this.attributes[item] || '';
+          });
+
+          let computedValue = handler(values);
+          this.attributes[prop] = computedValue;
+
+          binder.publish(`${id}:compute`, prop, computedValue, this);
         },
 
         get: function(attr) {

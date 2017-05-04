@@ -6,6 +6,8 @@
 
 ## Usage
 
+###
+
 ### Binder Constructor
 
 Use the `new` keyword to create a new Binder instance—this constructor only requires one argument: element's `binding ID`.
@@ -13,7 +15,8 @@ Use the `new` keyword to create a new Binder instance—this constructor only re
 Example:
 
 ```
-const user = new Binder('user123');
+const myUser = 'user123';
+const user = new Binder(myUser);
 ```
 
 
@@ -30,3 +33,26 @@ Example:
 <!-- binding ID: user123, property: age -->
 <p bind-user123="age">Replace this</p>
 ```
+
+### The `get` and `set` method
+
+**`set`**: assigns a value to a specified property inside the parent binder instance.
+
+
+```
+user.set('firstName', 'Joshua');
+```
+
+**`get`**: returns the value of the specified property inside the parent binder instance.
+
+```
+user.get('firstName', 'Joshua');
+```
+
+___
+
+In Development:
+
+- [ ] Add functionality for computed values
+- [ ] Make module easily exportable
+- [ ] Add test scripts
