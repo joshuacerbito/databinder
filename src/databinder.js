@@ -1,5 +1,5 @@
 // Create the DataBinder generator
-function DataBinder(object_id) {
+function Binder(object_id) {
   // Create a simple PubSub object
   let pubSub = {
     callbacks: {},
@@ -59,8 +59,8 @@ function DataBinder(object_id) {
   return pubSub;
 }
 
-function Binder(id) {
-  let binder = new DataBinder(id),
+function DataBinder(id) {
+  let binder = new Binder(id),
       model = {
         attributes: {},
         computes: {},

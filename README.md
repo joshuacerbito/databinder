@@ -1,5 +1,7 @@
 # DataBinder
 
+[![NPM downloads](https://img.shields.io/npm/dm/databinder.svg)](https://npmjs.org/package/databinder "View this project on NPM")
+
 **DataBinder** is a simple two-way data-binding JavaScript library inspired by the now obsolete [`Object.observe`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/observe) spec and the data-binding capabilities of JS libraries such as Vue, Angular, Ember, etc.
 
 *Note: This library is in active development.*
